@@ -1,0 +1,91 @@
+/* Portfolio Footer: shared styles. Change footer behavior only here. */
+footer[data-footer-component="portfolio-footer"] [data-framer-name="Text Cycle"] { display: none !important; }
+footer[data-footer-component="portfolio-footer"] [hidden] { display: none !important; }
+
+footer[data-footer-legacy-adopted="true"] [data-framer-name="Legal / Copyright"] {
+  grid-template-columns: 1fr !important;
+}
+footer[data-footer-legacy-adopted="true"] [data-framer-name="Based in / Legal"],
+footer[data-footer-legacy-adopted="true"] [data-framer-name="Menu"] {
+  width: 100% !important;
+}
+
+/* Setka uses the same white carrier as the rest of the footer social icons.
+   The supplied mark is a dark-background export, so its colours are inverted
+   only inside this white button. */
+footer[data-footer-component="portfolio-footer"] a[aria-label="Setka Link"] {
+  background-color: #fff !important;
+}
+
+footer[data-footer-component="portfolio-footer"] a[aria-label="Setka Link"] img {
+  filter: invert(1);
+}
+
+footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] a[aria-label] {
+  align-items: center !important;
+  background-color: #fff !important;
+  border-radius: 999px !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+}
+
+footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] a[aria-label] svg {
+  color: #000 !important;
+  fill: #000 !important;
+  height: 16px !important;
+  width: 16px !important;
+}
+
+footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] a[aria-label="hh.ru Link"] svg {
+  width: 26px !important;
+}
+
+footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] a[aria-label] img {
+  display: block;
+  height: 16px;
+  object-fit: contain;
+  width: 16px;
+}
+
+@media (max-width: 991.98px) {
+  footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] .framer-1p2w33w-container { width: 100% !important; }
+  footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] div[data-framer-name="Footer"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 40px) !important;
+    grid-auto-rows: 40px !important;
+    gap: 8px !important;
+    width: max-content !important;
+    height: auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+  }
+  footer[data-footer-component="portfolio-footer"] [data-framer-name="Social Links"] div[data-framer-name="Footer"] > a {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    padding: 8px !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  footer[data-footer-legacy-adopted="true"] [data-framer-name="Email / Book Call"] {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    gap: 24px !important;
+  }
+  footer[data-footer-legacy-adopted="true"] [data-framer-name="Email"],
+  footer[data-footer-legacy-adopted="true"] [data-framer-name="Book a Call"],
+  footer[data-footer-legacy-adopted="true"] [data-framer-name="Social Links"] {
+    width: 100% !important;
+    height: auto !important;
+  }
+  footer[data-footer-legacy-adopted="true"] [data-framer-name="Social Links"] div[data-framer-name="Footer"] {
+    width: 100% !important;
+    grid-template-columns: repeat(auto-fit, 40px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  footer[data-footer-component="portfolio-footer"] * { transition: none !important; animation: none !important; }
+}

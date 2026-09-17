@@ -1,0 +1,144 @@
+/* One action-button system for the complete static portfolio.
+   Black is the resting state. On precise-pointer hover, surface, label and
+   SVG mark invert together; transparent SVG paths stay transparent. */
+:root {
+  --site-button-ink: #141413;
+  --site-button-paper: #fff;
+  --site-button-ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+body :is(a, button)[data-framer-name="Main CTA"],
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ,
+body .resume-download > a {
+  background: var(--site-button-ink) !important;
+  background-color: var(--site-button-ink) !important;
+  border-color: var(--site-button-ink) !important;
+  color: var(--site-button-paper) !important;
+  box-shadow: 0 10px 22px -13px rgb(20 20 19 / .72) !important;
+  transition:
+    transform .28s var(--site-button-ease),
+    background-color .28s ease,
+    border-color .28s ease,
+    color .28s ease,
+    box-shadow .28s ease !important;
+}
+
+body [data-framer-name="Main CTA"] .framer-rjcjhg p,
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ :is(p, span),
+body .resume-download > a :is(p, span) {
+  --framer-text-color: currentColor !important;
+  color: inherit !important;
+}
+
+body :is(a, button)[data-framer-name="Main CTA"] svg,
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ svg,
+body .resume-download > a svg {
+  /* Framer's <use> icons read these two custom properties from the <svg>.
+     They must track currentColor as well as ordinary inline path icons do. */
+  --21h8s6: currentColor !important;
+  --pxuiy5: currentColor !important;
+  color: inherit !important;
+}
+
+body :is(a, button)[data-framer-name="Main CTA"] svg :is(path, circle, rect, polygon, polyline, text)[fill]:not([fill="none"]):not([fill="transparent"]),
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ svg :is(path, circle, rect, polygon, polyline, text)[fill]:not([fill="none"]):not([fill="transparent"]),
+body .resume-download > a svg :is(path, circle, rect, polygon, polyline, text)[fill]:not([fill="none"]):not([fill="transparent"]) {
+  fill: currentColor !important;
+}
+
+body :is(a, button)[data-framer-name="Main CTA"] svg :is(path, circle, rect, polygon, polyline, line, text)[stroke]:not([stroke="none"]):not([stroke="transparent"]),
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ svg :is(path, circle, rect, polygon, polyline, line, text)[stroke]:not([stroke="none"]):not([stroke="transparent"]),
+body .resume-download > a svg :is(path, circle, rect, polygon, polyline, line, text)[stroke]:not([stroke="none"]):not([stroke="transparent"]) {
+  stroke: currentColor !important;
+}
+
+/* Telegram sits on a white circular carrier inside the primary CTA.
+   It remains black in both button states so the mark never disappears. */
+body :is(a, button)[data-framer-name="Main CTA"] [data-framer-name="You Circle"] svg {
+  color: var(--site-button-ink) !important;
+}
+
+body :is(a, button)[data-framer-name="Main CTA"] [data-framer-name="You Circle"] svg :is(path, circle, rect, polygon, polyline, line, text)[fill]:not([fill="none"]):not([fill="transparent"]) {
+  fill: var(--site-button-ink) !important;
+}
+
+body :is(a, button)[data-framer-name="Main CTA"] :is(svg, svg *),
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ :is(svg, svg *),
+body .resume-download > a :is(svg, svg *) {
+  transition: fill .28s ease, stroke .28s ease, color .28s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body :is(a, button)[data-framer-name="Main CTA"]:hover,
+  body :is(a, button)[data-framer-name="Default"].framer-wIYkJ:hover,
+  body .resume-download > a:hover {
+    background: var(--site-button-paper) !important;
+    background-color: var(--site-button-paper) !important;
+    border-color: var(--site-button-ink) !important;
+    color: var(--site-button-ink) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 16px 28px -14px rgb(20 20 19 / .58) !important;
+  }
+}
+
+body :is(a, button)[data-framer-name="Main CTA"]:active,
+body :is(a, button)[data-framer-name="Default"].framer-wIYkJ:active,
+body .resume-download > a:active {
+  transform: translateY(0) scale(.98) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body :is(a, button)[data-framer-name="Main CTA"],
+  body :is(a, button)[data-framer-name="Default"].framer-wIYkJ,
+  body .resume-download > a,
+  body :is(a, button)[data-framer-name="Main CTA"] :is(svg, svg *),
+  body :is(a, button)[data-framer-name="Default"].framer-wIYkJ :is(svg, svg *),
+  body .resume-download > a :is(svg, svg *) {
+    transition: none !important;
+  }
+}
+
+/* Native markup for new actions. Existing Framer actions are adopted by
+   Button.enhance(), so old pages and future components share this contract. */
+.site-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 20px;
+  border: 1px solid var(--site-button-ink);
+  border-radius: 999px;
+  background: var(--site-button-ink);
+  color: var(--site-button-paper);
+  box-shadow: 0 10px 22px -13px rgb(20 20 19 / .72);
+  font: 600 16px/1 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -.025em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform .28s var(--site-button-ease), background-color .28s ease, border-color .28s ease, color .28s ease, box-shadow .28s ease;
+}
+
+.site-button__icon { width: 18px; height: 18px; flex: 0 0 18px; }
+.site-button:focus-visible { outline: 2px solid var(--site-button-ink); outline-offset: 3px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .site-button:hover:not([aria-disabled="true"]) {
+    background: var(--site-button-paper);
+    color: var(--site-button-ink);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px -14px rgb(20 20 19 / .58);
+  }
+}
+
+.site-button:active:not([aria-disabled="true"]) { transform: translateY(0) scale(.98); }
+.site-button[aria-disabled="true"] { opacity: .42; cursor: not-allowed; pointer-events: none; }
+.site-button.is-loading { cursor: progress; }
+.site-button__spinner { width: 15px; height: 15px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: site-button-spin .72s linear infinite; }
+@keyframes site-button-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-button { transition: none; }
+  .site-button__spinner { animation: none; }
+}
