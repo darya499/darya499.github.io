@@ -168,7 +168,7 @@
   syncLocation();
 
   var contentLoader = document.createElement('script');
-  contentLoader.src = new URL('scripts/content-loader.js', root).href;
+  contentLoader.src = new URL('scripts/content-loader.js', root).href + '?v=' + Date.now();
   contentLoader.async = false;
   document.head.appendChild(contentLoader);
 
