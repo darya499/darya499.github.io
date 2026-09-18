@@ -77,7 +77,7 @@
     pageKey: pageKey
   };
 
-  contentScript.src = new URL('content/' + pageKey + '.js', siteRoot).href;
+  contentScript.src = new URL('content/' + pageKey + '.js', siteRoot).href + '?v=' + Date.now();
   contentScript.defer = true;
   contentScript.onload = function () {
     applyContent(window.SitePageContent);
