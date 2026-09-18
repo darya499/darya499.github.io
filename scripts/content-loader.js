@@ -8,7 +8,7 @@
   var relativePath = pathname.indexOf(rootPath) === 0 ? pathname.slice(rootPath.length) : pathname;
 
   relativePath = relativePath.replace(/^\/+|\/+$/g, '').replace(/\/index\.html$/i, '');
-  var pageKey = relativePath ? relativePath.replace(/\//g, '--') : 'home';
+  var pageKey = relativePath ? relativePath.replace(/\//g, '-') : 'home';
   var contentScript = document.createElement('script');
 
   function applyContent(config) {
