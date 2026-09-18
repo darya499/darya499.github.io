@@ -11,7 +11,43 @@
   var pageKey = relativePath ? relativePath.replace(/\//g, '-') : 'home';
   var contentScript = document.createElement('script');
 
+  function applySectionOrders(config) {
+    if (!config || !Array.isArray(config.sectionOrders)) return;
+
+    config.sectionOrders.forEach(function (order) {
+      if (!order || !order.container || !Array.isArray(order.labels)) return;
+
+      var container = document.querySelector(order.container);
+      if (!container) return;
+
+      var children = Array.prototype.slice.call(container.children);
+      var headings = {};
+
+      order.labels.forEach(function (label) {
+        headings[label] = children.findIndex(function (child) {
+          return child.matches(order.headingSelector || '.case-section-label') && child.textContent.trim() === label;
+        });
+      });
+
+      if (order.labels.some(function (label) { return headings[label] < 0; })) return;
+
+      var currentOrder = order.labels.slice().sort(function (a, b) { return headings[a] - headings[b]; });
+      var groups = {};
+
+      currentOrder.forEach(function (label, index) {
+        var start = headings[label];
+        var end = index + 1 < currentOrder.length ? headings[currentOrder[index + 1]] : children.length;
+        groups[label] = children.slice(start, end);
+      });
+
+      order.labels.forEach(function (label) {
+        groups[label].forEach(function (node) { container.appendChild(node); });
+      });
+    });
+  }
+
   function applyContent(config) {
+    applySectionOrders(config);
     if (!config || !Array.isArray(config.replacements)) return;
 
     config.replacements.forEach(function (replacement) {
