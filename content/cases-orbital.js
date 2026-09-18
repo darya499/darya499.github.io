@@ -1,4 +1,11 @@
-/* Content overrides for /cases/orbital/. Edit this small file for page-specific content changes. */
+/* Content overrides for /cases/orbital/. */
 window.SitePageContent = {
-  replacements: []
+  replacements: [
+    {
+      selector: 'a[href="../../cases/axiom/"]',
+      attributes: {
+        href: '/case-169/'
+      }
+    }
+  ]
 };
