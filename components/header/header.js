@@ -167,6 +167,15 @@
   syncScrollState();
   syncLocation();
 
+  if (relativePath === 'case-169/' || relativePath === 'case-169/index.html') {
+    var resultBadges = document.querySelectorAll('.case-result-badge-text');
+    Array.prototype.forEach.call(resultBadges, function (badge) {
+      if (badge.textContent.trim() === 'Превратила статью списаний в дополнительный канал выручки — и в готовый к тиражированию процесс для других категорий товара.') {
+        badge.textContent = 'Более 2,5 млн ₽ прибыли за два года и дополнительный трафик из Avito: низкие цены на уценённые входные двери привлекали новых покупателей вместо списания товара';
+      }
+    });
+  }
+
   /* The UI Kit preview uses the same header source. Query states are isolated
      to preview documents and never affect portfolio pages. */
   var previewParams = new URLSearchParams(location.search);
