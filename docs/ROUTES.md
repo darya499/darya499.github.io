@@ -16,6 +16,28 @@
 | `/404.html` | `404.html` | Страница ошибки. |
 | `/daria-maksimova-resume.pdf` | `daria-maksimova-resume.pdf` | Публичное резюме. |
 
+## Файлы для быстрых правок
+
+| Публичный путь | Content-файл |
+| --- | --- |
+| `/` | `content/home.js` |
+| `/case-169/` | `content/case-169.js` |
+| `/cases/` | `content/cases.js` |
+| `/cases/essentia/` | `content/cases-essentia.js` |
+| `/cases/orbital/` | `content/cases-orbital.js` |
+| `/cases/quantum/` | `content/cases-quantum.js` |
+| `/feed/` | `content/feed.js` |
+| `/blog/` | `content/blog.js` |
+| `/blog/designing-for-human-connection/` | `content/blog-designing-for-human-connection.js` |
+| `/blog/how-designers-and-developers-can-actually-collaborate/` | `content/blog-how-designers-and-developers-can-actually-collaborate.js` |
+| `/blog/why-faster-isnt-always-better/` | `content/blog-why-faster-isnt-always-better.js` |
+| `/privacy-policy/` | `content/privacy-policy.js` |
+| `/terms/` | `content/terms.js` |
+
+Маршрут `/cases/axiom/` — устаревшая копия без общего компонента шапки, поэтому автоматический загрузчик к нему пока не подключён. Не редактируйте этот большой HTML без отдельного согласования.
+
+Для нового маршрута имя content-файла образуется из пути заменой `/` на `-`. Создание content-файла одновременно с новой страницей обязательно по [правилам работы с сайтом](GITHUB-WORKFLOW.md).
+
 ## Не входит в публикацию
 
 Старые генераторы и их промежуточные файлы, английские дубли, кэш, диагностика, Excel и CSV-выгрузки не хранятся в этом репозитории. Не добавляйте их при обновлении сайта.
