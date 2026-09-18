@@ -84,7 +84,7 @@ window.SitePageContent = {
     analyticsIcon.textContent = '→';
     var analyticsResult = document.createElement('p');
     analyticsResult.className = 'case-result-badge-text';
-    analyticsResult.textContent = 'Целевые лид-формы: +194% на мебельном сайте и +52% на дверном.';
+    analyticsResult.textContent = 'Целевые лид-формы из контекстной рекламы: +194% на мебельном сайте и +52% на дверном.';
     analyticsBadge.append(analyticsIcon, analyticsResult);
     document.getElementById('case-169-analytics-copy').after(analyticsBadge);
   }
