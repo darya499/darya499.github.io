@@ -66,6 +66,29 @@ window.SitePageContent = {
     container.appendChild(heading);
   });
 
+
+  var analytics = findHeading('Аналитика и измеримость продукта');
+  if (analytics && !document.getElementById('case-169-analytics-copy')) {
+    var analyticsCopy = document.createElement('p');
+    analyticsCopy.id = 'case-169-analytics-copy';
+    analyticsCopy.className = 'case-summary-text';
+    analyticsCopy.textContent = 'Расхождение между отправками форм на сайте и лидами в CRM мешало оценивать результат продуктовых изменений: было непонятно, где пользователь отказывался от обращения, а где заявка терялась технически. Разобрала путь от отправки формы до принятия заявки менеджером и определила, какие события и контекст нужны на каждом этапе. Пересмотрела цели в Яндекс Метрике и их передачу в рекламу, поставила задачи разработчику и проверила прохождение заявок после исправлений. Расхождение сайт–CRM удалось свести к нулю. Прослушивание звонков показало, что путь требует доработки и после отправки формы: вместе с заявкой начали передавать контекст обращения и сценарий начала разговора, чтобы менеджер мог продолжить взаимодействие с учётом действий клиента на сайте.';
+    analytics.after(analyticsCopy);
+  }
+  if (analytics && !document.getElementById('case-169-analytics-result')) {
+    var analyticsBadge = document.createElement('div');
+    analyticsBadge.id = 'case-169-analytics-result';
+    analyticsBadge.className = 'case-result-badge';
+    var analyticsIcon = document.createElement('span');
+    analyticsIcon.className = 'case-result-badge-icon';
+    analyticsIcon.textContent = '→';
+    var analyticsResult = document.createElement('p');
+    analyticsResult.className = 'case-result-badge-text';
+    analyticsResult.textContent = 'Целевые лид-формы: +194% на мебельном сайте и +52% на дверном.';
+    analyticsBadge.append(analyticsIcon, analyticsResult);
+    document.getElementById('case-169-analytics-copy').after(analyticsBadge);
+  }
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
