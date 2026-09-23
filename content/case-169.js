@@ -89,6 +89,28 @@ window.SitePageContent = {
     document.getElementById('case-169-analytics-copy').after(analyticsBadge);
   }
 
+  var checkout = findHeading('Корзина и оформление заказа');
+  if (checkout && !document.getElementById('case-169-checkout-copy')) {
+    var checkoutCopy = document.createElement('p');
+    checkoutCopy.id = 'case-169-checkout-copy';
+    checkoutCopy.className = 'case-summary-text';
+    checkoutCopy.textContent = 'Старая корзина на обоих сайтах поддерживала только заявку через менеджера, поэтому клиент не мог завершить покупку самостоятельно. На основе CJM, анализа поведения в Вебвизоре и A/B-тестов переработала путь от выбора товара до заказа: разделила корзину и оформление на два этапа, добавила самостоятельный выбор даты доставки, дополнительных услуг и рассрочки. Для покупателей, которым нужна консультация, сохранила быстрый сценарий передачи состава корзины менеджеру без заполнения полной формы. В результате продукт стал поддерживать два пользовательских пути: самостоятельную покупку и оформление с помощью специалиста.';
+    checkout.after(checkoutCopy);
+  }
+  if (checkout && !document.getElementById('case-169-checkout-result')) {
+    var checkoutBadge = document.createElement('div');
+    checkoutBadge.id = 'case-169-checkout-result';
+    checkoutBadge.className = 'case-result-badge';
+    var checkoutIcon = document.createElement('span');
+    checkoutIcon.className = 'case-result-badge-icon';
+    checkoutIcon.textContent = '→';
+    var checkoutResult = document.createElement('p');
+    checkoutResult.className = 'case-result-badge-text';
+    checkoutResult.textContent = 'Количество выставленных счетов выросло в 2 раза.';
+    checkoutBadge.append(checkoutIcon, checkoutResult);
+    document.getElementById('case-169-checkout-copy').after(checkoutBadge);
+  }
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
