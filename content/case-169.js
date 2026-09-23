@@ -111,6 +111,63 @@ window.SitePageContent = {
     document.getElementById('case-169-checkout-copy').after(checkoutBadge);
   }
 
+  if (checkout && !document.getElementById('case-169-checkout-gallery')) {
+    var checkoutGallery = document.createElement('div');
+    checkoutGallery.id = 'case-169-checkout-gallery';
+    checkoutGallery.className = 'case-tasks-stack';
+    checkoutGallery.style.gap = '24px';
+    checkoutGallery.style.margin = '24px 0 32px';
+
+    [
+      {
+        src: '/assets/case-169/checkout-before.webp',
+        alt: 'Старая корзина 169 с оформлением заказа на одной странице',
+        caption: 'До: корзина и оформление заказа на одной странице.',
+        width: 1773,
+        height: 2048
+      },
+      {
+        src: '/assets/case-169/checkout-cart.webp',
+        alt: 'Новая корзина 169 — первый этап оформления заказа',
+        caption: 'После, этап 1: корзина.',
+        width: 1899,
+        height: 926
+      },
+      {
+        src: '/assets/case-169/checkout-form.webp',
+        alt: 'Новое оформление заказа 169 — второй этап',
+        caption: 'После, этап 2: оформление заказа.',
+        width: 2048,
+        height: 1721
+      }
+    ].forEach(function (item) {
+      var figure = document.createElement('figure');
+      figure.className = 'case-tasks-figure';
+
+      var image = document.createElement('img');
+      image.src = item.src;
+      image.alt = item.alt;
+      image.width = item.width;
+      image.height = item.height;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.className = 'case-lightbox-zoomable';
+
+      var caption = document.createElement('figcaption');
+      caption.textContent = item.caption;
+
+      figure.append(image, caption);
+      checkoutGallery.appendChild(figure);
+    });
+
+    var checkoutResultNode = document.getElementById('case-169-checkout-result');
+    if (checkoutResultNode) {
+      checkoutResultNode.before(checkoutGallery);
+    } else {
+      document.getElementById('case-169-checkout-copy').after(checkoutGallery);
+    }
+  }
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
