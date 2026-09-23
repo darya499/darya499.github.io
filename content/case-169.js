@@ -151,7 +151,7 @@ window.SitePageContent = {
       image.height = item.height;
       image.loading = 'lazy';
       image.decoding = 'async';
-      image.className = 'case-lightbox-zoomable';
+      image.className = 'case-lightbox-zoomable';\n      image.style.height = 'auto';
 
       var caption = document.createElement('figcaption');
       caption.textContent = item.caption;
