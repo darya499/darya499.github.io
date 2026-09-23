@@ -37,6 +37,20 @@ window.SitePageContent = {
     });
   }
 
+  // Remove the legacy Bitrix homepage card and its paired image.
+  var legacyHomepageHeading = Array.prototype.find.call(
+    document.querySelectorAll('.framer-ry328i h2'),
+    function (node) {
+      return node.textContent.trim() === 'Редизайн главной страницы mebel169.ru.';
+    }
+  );
+  if (legacyHomepageHeading) {
+    var legacyHomepageCard = legacyHomepageHeading.closest('.framer-dpij7l');
+    if (legacyHomepageCard && legacyHomepageCard.parentElement.matches('.framer-ry328i')) {
+      legacyHomepageCard.remove();
+    }
+  }
+
   var catalog = findHeading('Каталог и карточка товара');
   if (!catalog) return;
 
