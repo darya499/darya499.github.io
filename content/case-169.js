@@ -51,6 +51,19 @@ window.SitePageContent = {
     }
   }
 
+  // The exported Framer media starts transparent. After removing the first
+  // card, its scroll animation no longer reveals the remaining card images.
+  var caseImageStyle = document.getElementById('case-169-visible-evidence-images');
+  if (!caseImageStyle) {
+    caseImageStyle = document.createElement('style');
+    caseImageStyle.id = 'case-169-visible-evidence-images';
+    caseImageStyle.textContent =
+      '.framer-ry328i > .framer-dpij7l .framer-1rt4bxk [data-framer-name="Image 1"], ' +
+      '.framer-ry328i > .framer-dpij7l .framer-1rt4bxk [data-framer-name="Image 2"] ' +
+      '{ opacity: 1 !important; }';
+    document.head.appendChild(caseImageStyle);
+  }
+
   var catalog = findHeading('Каталог и карточка товара');
   if (!catalog) return;
 
