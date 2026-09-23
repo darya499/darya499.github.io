@@ -153,6 +153,25 @@ window.SitePageContent = {
       image.decoding = 'async';
       image.className = 'case-lightbox-zoomable';
       image.style.height = 'auto';
+      image.tabIndex = 0;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', 'Увеличить: ' + item.caption);
+
+      function openCheckoutImage() {
+        var overlay = document.querySelector('.case-lightbox-overlay');
+        var overlayImage = overlay && overlay.querySelector('img');
+        if (!overlay || !overlayImage) return;
+        overlayImage.src = image.currentSrc || image.src;
+        overlayImage.alt = image.alt;
+        overlay.classList.add('is-open');
+      }
+
+      image.addEventListener('click', openCheckoutImage);
+      image.addEventListener('keydown', function (event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openCheckoutImage();
+      });
 
       var caption = document.createElement('figcaption');
       caption.textContent = item.caption;
