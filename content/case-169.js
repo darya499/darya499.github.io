@@ -100,7 +100,7 @@ window.SitePageContent = {
     var redesignCopy = document.createElement('p');
     redesignCopy.id = 'case-169-redesign-copy';
     redesignCopy.className = 'case-summary-text';
-    redesignCopy.textContent = 'Редизайн 169.ru и mebel169.ru начала с пути покупателя: составила CJM от первого контакта до заказа и сопоставила её с метриками прежних сайтов. Это помогло определить, как выстроить навигацию и что показать на главной странице в первую очередь — популярные категории, акции и понятный путь к товару. Для обеих платформ создала общий UI-кит с вариантами и состояниями компонентов, учитывая адаптивность и SEO-требования. После запуска проверяла гипотезы A/B-тестами и дорабатывала интерфейсы по результатам.';
+    redesignCopy.textContent = 'Редизайн 169.ru и mebel169.ru начала с CJM и анализа прежних сайтов: изучила путь покупателя к товару и на этой основе спроектировала навигацию и главные страницы с акцентом на популярные категории и акции. Для двух платформ создала общий UI-кит с компонентами, их состояниями и правилами адаптации. Он помог последовательно развивать интерфейсы на разных экранах и упростил передачу макетов в разработку.';
     redesign.after(redesignCopy);
   }
 
@@ -166,6 +166,25 @@ window.SitePageContent = {
     });
 
     document.getElementById('case-169-redesign-copy').after(redesignGallery);
+  }
+
+  if (redesign && !document.getElementById('case-169-redesign-result')) {
+    var redesignBadge = document.createElement('div');
+    redesignBadge.id = 'case-169-redesign-result';
+    redesignBadge.className = 'case-result-badge';
+    var redesignIcon = document.createElement('span');
+    redesignIcon.className = 'case-result-badge-icon';
+    redesignIcon.textContent = '→';
+    var redesignResult = document.createElement('p');
+    redesignResult.className = 'case-result-badge-text';
+    redesignResult.textContent = 'После внедрения элементов UI-кита и дизайн-системы время подготовки интерфейсных решений и макетов сократилось примерно на 30%.';
+    redesignBadge.append(redesignIcon, redesignResult);
+    var redesignGalleryNode = document.getElementById('case-169-redesign-gallery');
+    if (redesignGalleryNode) {
+      redesignGalleryNode.after(redesignBadge);
+    } else {
+      document.getElementById('case-169-redesign-copy').after(redesignBadge);
+    }
   }
 
   var analytics = findHeading('Аналитика и измеримость продукта');
