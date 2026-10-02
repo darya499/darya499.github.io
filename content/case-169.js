@@ -94,6 +94,80 @@ window.SitePageContent = {
   });
 
 
+
+  var redesign = findHeading('Редизайн двух e-commerce-платформ');
+  if (redesign && !document.getElementById('case-169-redesign-copy')) {
+    var redesignCopy = document.createElement('p');
+    redesignCopy.id = 'case-169-redesign-copy';
+    redesignCopy.className = 'case-summary-text';
+    redesignCopy.textContent = 'Редизайн 169.ru и mebel169.ru начала с пути покупателя: составила CJM от первого контакта до заказа и сопоставила её с метриками прежних сайтов. Это помогло определить, как выстроить навигацию и что показать на главной странице в первую очередь — популярные категории, акции и понятный путь к товару. Для обеих платформ создала общий UI-кит с вариантами и состояниями компонентов, учитывая адаптивность и SEO-требования. После запуска проверяла гипотезы A/B-тестами и дорабатывала интерфейсы по результатам.';
+    redesign.after(redesignCopy);
+  }
+
+  if (redesign && !document.getElementById('case-169-redesign-gallery')) {
+    var redesignGallery = document.createElement('div');
+    redesignGallery.id = 'case-169-redesign-gallery';
+    redesignGallery.className = 'case-tasks-stack';
+    redesignGallery.style.gap = '24px';
+    redesignGallery.style.margin = '24px 0 32px';
+
+    [
+      {
+        src: '/assets/case-169/redesign-ui-kit.webp',
+        alt: 'Общий UI-кит двух e-commerce-сайтов: кнопки, типографика, палитра и поля ввода',
+        caption: 'Общий UI-кит для двух сайтов.',
+        width: 1621,
+        height: 726
+      },
+      {
+        src: '/assets/case-169/redesign-responsive.webp',
+        alt: 'Адаптивная главная страница сайта 169 на компьютере, планшете и смартфоне',
+        caption: 'Главная страница на разных экранах.',
+        width: 1024,
+        height: 490
+      }
+    ].forEach(function (item) {
+      var figure = document.createElement('figure');
+      figure.className = 'case-tasks-figure';
+
+      var image = document.createElement('img');
+      image.src = item.src;
+      image.alt = item.alt;
+      image.width = item.width;
+      image.height = item.height;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      image.className = 'case-lightbox-zoomable';
+      image.style.height = 'auto';
+      image.tabIndex = 0;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', 'Увеличить: ' + item.caption);
+
+      function openRedesignImage() {
+        var overlay = document.querySelector('.case-lightbox-overlay');
+        var overlayImage = overlay && overlay.querySelector('img');
+        if (!overlay || !overlayImage) return;
+        overlayImage.src = image.currentSrc || image.src;
+        overlayImage.alt = image.alt;
+        overlay.classList.add('is-open');
+      }
+
+      image.addEventListener('click', openRedesignImage);
+      image.addEventListener('keydown', function (event) {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openRedesignImage();
+      });
+
+      var caption = document.createElement('figcaption');
+      caption.textContent = item.caption;
+      figure.append(image, caption);
+      redesignGallery.appendChild(figure);
+    });
+
+    document.getElementById('case-169-redesign-copy').after(redesignGallery);
+  }
+
   var analytics = findHeading('Аналитика и измеримость продукта');
   if (analytics && !document.getElementById('case-169-analytics-copy')) {
     var analyticsCopy = document.createElement('p');
