@@ -31,6 +31,33 @@ window.SitePageContent = {
   var container = document.querySelector('.case-tasks');
   if (!container) return;
 
+  // Keep headings attached to their content while making section boundaries clear.
+  // The same scale and responsive values are documented in docs/GITHUB-WORKFLOW.md.
+  if (!document.getElementById('case-169-spacing')) {
+    var spacingStyle = document.createElement('style');
+    spacingStyle.id = 'case-169-spacing';
+    spacingStyle.textContent = [
+      '.case-stats { margin-bottom: 48px; }',
+      '.case-tasks > .case-section-title { margin-bottom: 16px; }',
+      '.case-tasks > .case-section-label { margin: 48px 0 16px; }',
+      '.case-tasks > .case-section-title + .case-section-label { margin-top: 24px; }',
+      '.case-tasks > .case-summary-text { margin-bottom: 16px; }',
+      '.case-tasks > .case-summary-text + :is(.case-tasks-figure, .case-tasks-gallery, .case-compare) { margin-top: 24px; }',
+      '.case-tasks > :is(.case-tasks-figure, .case-tasks-gallery, .case-compare) + .case-result-badge { margin-top: 24px; }',
+      '.case-stats + .case-tasks { margin-bottom: 0; }',
+      '.case-stats + .case-tasks > .case-result-badge:last-child { margin-bottom: 0; }',
+      '#case-169-future-sections { margin-top: 56px; }',
+      '#case-169-future-sections > .case-section-title:not(:first-child) { margin-top: 56px; }',
+      '@media (max-width: 767.98px) {',
+      '  .case-stats { margin-bottom: 40px; }',
+      '  .case-tasks > .case-section-label { margin-top: 32px; }',
+      '  .case-tasks > .case-section-title + .case-section-label { margin-top: 20px; }',
+      '  #case-169-future-sections, #case-169-future-sections > .case-section-title:not(:first-child) { margin-top: 40px; }',
+      '}'
+    ].join('\n');
+    document.head.appendChild(spacingStyle);
+  }
+
   function findHeading(label) {
     return Array.prototype.find.call(container.children, function (node) {
       return node.matches('.case-section-label') && node.textContent.trim() === label;
@@ -140,7 +167,7 @@ window.SitePageContent = {
     redesignGallery.id = 'case-169-redesign-gallery';
     redesignGallery.className = 'case-tasks-stack';
     redesignGallery.style.gap = '24px';
-    redesignGallery.style.margin = '24px 0 32px';
+    redesignGallery.style.margin = '24px 0 24px';
 
     [
       {
@@ -267,7 +294,7 @@ window.SitePageContent = {
     checkoutGallery.id = 'case-169-checkout-gallery';
     checkoutGallery.className = 'case-tasks-stack';
     checkoutGallery.style.gap = '24px';
-    checkoutGallery.style.margin = '24px 0 32px';
+    checkoutGallery.style.margin = '24px 0 24px';
 
     [
       {
