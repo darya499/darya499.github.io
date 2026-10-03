@@ -64,6 +64,24 @@ window.SitePageContent = {
     }
   }
 
+  // Remove the obsolete full-height product-card screenshots and their copy.
+  var obsoleteProductHeading = Array.prototype.find.call(
+    document.querySelectorAll('.framer-ry328i h2'),
+    function (node) {
+      return node.textContent.trim() === 'Карточка товара переработана целиком.';
+    }
+  );
+  if (obsoleteProductHeading) {
+    var obsoleteProductCard = obsoleteProductHeading.closest('.framer-dpij7l');
+    if (
+      obsoleteProductCard &&
+      obsoleteProductCard.parentElement.matches('.framer-ry328i') &&
+      obsoleteProductCard.querySelectorAll('img').length === 2
+    ) {
+      obsoleteProductCard.remove();
+    }
+  }
+
   // The exported Framer media starts transparent. After removing the first
   // card, its scroll animation no longer reveals the remaining card images.
   var caseImageStyle = document.getElementById('case-169-visible-evidence-images');
@@ -344,6 +362,13 @@ window.SitePageContent = {
   });
 
   var aiAutomation = document.getElementById('case-169-ai-automation');
+  if (aiAutomation && !document.getElementById('case-169-ai-copy')) {
+    var aiCopy = document.createElement('p');
+    aiCopy.id = 'case-169-ai-copy';
+    aiCopy.className = 'case-summary-text';
+    aiCopy.textContent = 'Запустила ИИ-автоматизации для каталога: массовую генерацию товарных фото и SEO-описаний по готовым свойствам, исправление ошибок с проверкой контент-командой и видеообложки из фото в листинге. Для контроля покупательских сценариев внедрила ежедневный отчёт в Telegram: он отмечает аномалии целей Метрики и по выборке записей Вебвизора предлагает гипотезы для проверки. Вела работу от идеи до запуска, включая тестирование и обучение; код реализовали разработчики.';
+    aiAutomation.after(aiCopy);
+  }
   if (aiAutomation && !document.getElementById('case-169-ai-result')) {
     var aiBadge = document.createElement('div');
     aiBadge.id = 'case-169-ai-result';
@@ -355,7 +380,7 @@ window.SitePageContent = {
     aiResult.className = 'case-result-badge-text';
     aiResult.textContent = 'Время создания товарной карточки сократилось на 50%. ИИ-мониторинг помог выявить снижение конверсии и восстановить показатель после исправлений.';
     aiBadge.append(aiIcon, aiResult);
-    aiAutomation.after(aiBadge);
+    (document.getElementById('case-169-ai-copy') || aiAutomation).after(aiBadge);
   }
 
   // The export preserves whitespace. Moving only elements otherwise leaves
