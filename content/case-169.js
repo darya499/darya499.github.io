@@ -37,6 +37,19 @@ window.SitePageContent = {
     });
   }
 
+  // Remove the three diary evidence cards and their heading; keep the retail section.
+  var diarySection = document.querySelector('.case-evidence');
+  if (
+    diarySection &&
+    document.querySelectorAll('.case-evidence').length === 1 &&
+    diarySection.children.length === 4 &&
+    diarySection.firstElementChild.matches('h2.case-section-title') &&
+    diarySection.firstElementChild.textContent.trim() === 'Гипотезы и результат — из дневника' &&
+    diarySection.querySelectorAll(':scope > .case-evidence-card').length === 3
+  ) {
+    diarySection.remove();
+  }
+
   // Remove the legacy Bitrix homepage card and its paired image.
   var legacyHomepageHeading = Array.prototype.find.call(
     document.querySelectorAll('.framer-ry328i h2'),
