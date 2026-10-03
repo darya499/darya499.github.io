@@ -321,6 +321,20 @@ window.SitePageContent = {
     }
   }
 
+  [
+    ['case-169-offline-retail', 'Офлайн-ритейл'],
+    ['case-169-visual-branding', 'Брендинг и визуальные коммуникации'],
+    ['case-169-ai-automation', 'Автоматизации с ИИ'],
+    ['case-169-marketing', 'Маркетинг и продвижение']
+  ].forEach(function (section) {
+    if (document.getElementById(section[0])) return;
+    var heading = document.createElement('h2');
+    heading.id = section[0];
+    heading.className = 'case-section-title';
+    heading.textContent = section[1];
+    container.appendChild(heading);
+  });
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
