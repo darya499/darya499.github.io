@@ -321,6 +321,14 @@ window.SitePageContent = {
     }
   }
 
+  // Keep future section headings after all product work, outside the reordered content.
+  var futureSections = document.getElementById('case-169-future-sections');
+  if (!futureSections) {
+    futureSections = document.createElement('div');
+    futureSections.id = 'case-169-future-sections';
+    futureSections.className = 'case-tasks';
+    container.after(futureSections);
+  }
   [
     ['case-169-offline-retail', 'Офлайн-ритейл'],
     ['case-169-visual-branding', 'Брендинг и визуальные коммуникации'],
@@ -332,7 +340,7 @@ window.SitePageContent = {
     heading.id = section[0];
     heading.className = 'case-section-title';
     heading.textContent = section[1];
-    container.appendChild(heading);
+    futureSections.appendChild(heading);
   });
 
   // The export preserves whitespace. Moving only elements otherwise leaves
