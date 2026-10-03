@@ -343,6 +343,21 @@ window.SitePageContent = {
     futureSections.appendChild(heading);
   });
 
+  var aiAutomation = document.getElementById('case-169-ai-automation');
+  if (aiAutomation && !document.getElementById('case-169-ai-result')) {
+    var aiBadge = document.createElement('div');
+    aiBadge.id = 'case-169-ai-result';
+    aiBadge.className = 'case-result-badge';
+    var aiIcon = document.createElement('span');
+    aiIcon.className = 'case-result-badge-icon';
+    aiIcon.textContent = '→';
+    var aiResult = document.createElement('p');
+    aiResult.className = 'case-result-badge-text';
+    aiResult.textContent = 'Время создания товарной карточки сократилось на 50%. ИИ-мониторинг помог выявить снижение конверсии и восстановить показатель после исправлений.';
+    aiBadge.append(aiIcon, aiResult);
+    aiAutomation.after(aiBadge);
+  }
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
