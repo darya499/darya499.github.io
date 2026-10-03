@@ -361,6 +361,68 @@ window.SitePageContent = {
     futureSections.appendChild(heading);
   });
 
+
+  var offlineRetail = document.getElementById('case-169-offline-retail');
+  if (offlineRetail && !document.getElementById('case-169-offline-copy')) {
+    var offlineCopy = document.createElement('p');
+    offlineCopy.id = 'case-169-offline-copy';
+    offlineCopy.className = 'case-summary-text';
+    offlineCopy.textContent = 'Работала с опытом покупателя в четырёх магазинах: оформляла витрины, навигацию и зонирование торгового зала, участвовала в расстановке товара. При открытии магазина в Бутово отвечала за организацию пространства — от зон до расположения ассортимента.';
+    var offlineStand = document.createElement('p');
+    offlineStand.id = 'case-169-offline-stand';
+    offlineStand.className = 'case-summary-text';
+    offlineStand.textContent = 'Обратная связь из торгового зала выявила риск у стенда для столешниц на входе: образцы падали и повреждались. Переработала его конструкцию: добавила надёжное крепление и подсветку. Теперь стенд встречает посетителей на входе, а образцы закреплены безопасно.';
+    offlineRetail.after(offlineCopy, offlineStand);
+  }
+
+  var visualBranding = document.getElementById('case-169-visual-branding');
+  if (visualBranding && !document.getElementById('case-169-brand-copy')) {
+    var brandCopy = document.createElement('p');
+    brandCopy.id = 'case-169-brand-copy';
+    brandCopy.className = 'case-summary-text';
+    brandCopy.textContent = 'Для розничных точек разрабатывала логотип, вывески и брендирование автомобилей. При открытии магазина в Бутово отвечала за вывески; после первой реализации скорректировала решение подсветки. Вывеска на Кунцевской заметна издалека, а брендированные автомобили фотографируют на улицах Москвы.';
+    var brandCommunications = document.createElement('p');
+    brandCommunications.id = 'case-169-brand-communications';
+    brandCommunications.className = 'case-summary-text';
+    brandCommunications.textContent = 'Вместе с маркетологом обновляла полиграфию: визитки, таблички для менеджеров и дорхолдеры. Для маркетплейсов организовывала мини-съёмки, включая видео с поворотом дверной ручки вместо статичного фото. Для отраслевых публикаций собирала историю компании: интервьюировала генерального директора, восстанавливала хронологию развития и первые логотипы.';
+    visualBranding.after(brandCopy, brandCommunications);
+  }
+
+  // Keep the branded-materials image, then remove the obsolete retail section
+  // and its caption referring back to that section.
+  var legacyRetail = Array.prototype.find.call(document.querySelectorAll('.case-retail'), function (node) {
+    return node.firstElementChild &&
+      node.firstElementChild.textContent.trim() === 'Розница — не только сайт';
+  });
+  var legacyMedia = legacyRetail && legacyRetail.nextElementSibling;
+  var legacySection = legacyRetail && legacyRetail.closest('section.framer-b9xdar');
+  var oldBrandHeading = legacyMedia && legacyMedia.querySelector('h2');
+  var oldBrandImage = legacyMedia && legacyMedia.querySelector('img');
+  if (
+    document.getElementById('case-169-offline-copy') &&
+    document.getElementById('case-169-offline-stand') &&
+    document.getElementById('case-169-brand-copy') &&
+    document.getElementById('case-169-brand-communications') &&
+    legacySection &&
+    legacyMedia && legacyMedia.matches('.framer-ry328i') &&
+    legacyRetail.parentElement === legacyMedia.parentElement &&
+    legacyRetail.parentElement.children.length === 2 &&
+    oldBrandHeading && oldBrandHeading.textContent.trim() === 'Кроме продукта — ещё и бренд.' &&
+    oldBrandImage && legacyMedia.querySelectorAll('img').length === 1
+  ) {
+    var brandFigure = document.createElement('figure');
+    brandFigure.id = 'case-169-brand-visual';
+    brandFigure.className = 'case-tasks-figure';
+    oldBrandImage.alt = 'Примеры фирменных материалов 169';
+    oldBrandImage.style.height = 'auto';
+    oldBrandImage.loading = 'lazy';
+    var brandCaption = document.createElement('figcaption');
+    brandCaption.textContent = 'Примеры фирменных материалов 169.';
+    brandFigure.append(oldBrandImage, brandCaption);
+    document.getElementById('case-169-brand-communications').after(brandFigure);
+    legacySection.remove();
+  }
+
   var aiAutomation = document.getElementById('case-169-ai-automation');
   if (aiAutomation && !document.getElementById('case-169-ai-copy')) {
     var aiCopy = document.createElement('p');
