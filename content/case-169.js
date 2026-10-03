@@ -383,6 +383,29 @@ window.SitePageContent = {
     (document.getElementById('case-169-ai-copy') || aiAutomation).after(aiBadge);
   }
 
+
+  var marketing = document.getElementById('case-169-marketing');
+  if (marketing && !document.getElementById('case-169-marketing-copy')) {
+    var marketingCopy = document.createElement('p');
+    marketingCopy.id = 'case-169-marketing-copy';
+    marketingCopy.className = 'case-summary-text';
+    marketingCopy.textContent = 'Раньше акции на двух сайтах оставались отдельными баннерами и приносили мало заявок. Я встроила предложения в выбор товара: они появились в каталоге и карточках, откуда покупатель мог оставить заявку. Для каждой точки входа настроила цель в Метрике, чтобы видеть результат размещения. По той же логике переработала посадочные страницы: страницу проектирования кухни — для контекстного трафика, страницу дизайнеров — для знакомства с работами, форматом сотрудничества и подачи заявки.';
+    marketing.after(marketingCopy);
+  }
+  if (marketing && !document.getElementById('case-169-marketing-result')) {
+    var marketingBadge = document.createElement('div');
+    marketingBadge.id = 'case-169-marketing-result';
+    marketingBadge.className = 'case-result-badge';
+    var marketingIcon = document.createElement('span');
+    marketingIcon.className = 'case-result-badge-icon';
+    marketingIcon.textContent = '→';
+    var marketingResult = document.createElement('p');
+    marketingResult.className = 'case-result-badge-text';
+    marketingResult.textContent = 'После обновления страницы количество CRM-заявок от дизайнеров выросло на 40%.';
+    marketingBadge.append(marketingIcon, marketingResult);
+    (document.getElementById('case-169-marketing-copy') || marketing).after(marketingBadge);
+  }
+
   // The export preserves whitespace. Moving only elements otherwise leaves
   // all separator newlines before the first section and produces a large gap.
   Array.prototype.slice.call(container.childNodes).forEach(function (node) {
