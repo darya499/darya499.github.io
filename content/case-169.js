@@ -403,12 +403,8 @@ window.SitePageContent = {
     var brandCopy = document.createElement('p');
     brandCopy.id = 'case-169-brand-copy';
     brandCopy.className = 'case-summary-text';
-    brandCopy.textContent = 'Развивала визуальные коммуникации в рознице: вывески, логотип для магазина в Бутово и брендирование автомобилей. После первой реализации вывесок пересмотрела подсветку; вывеска на Кунцевской заметна издалека, а автомобили фотографируют на улицах Москвы.';
-    var brandCommunications = document.createElement('p');
-    brandCommunications.id = 'case-169-brand-communications';
-    brandCommunications.className = 'case-summary-text';
-    brandCommunications.textContent = 'Вместе с маркетологом обновляла полиграфию: визитки, таблички для менеджеров и дорхолдеры. Для маркетплейсов организовывала мини-съёмки, включая видео с поворотом дверной ручки вместо статичного фото. Для отраслевых публикаций собирала историю компании: интервьюировала генерального директора, восстанавливала хронологию развития и первые логотипы.';
-    visualBranding.after(brandCopy, brandCommunications);
+    brandCopy.textContent = 'У 169 не было единого брендбука: оформление зависело от конкретного дизайнера и менялось от канала к каналу. При разработке визуальной системы я изучила историю компании через интервью с генеральным директором и определила правила её применения в рекламе, магазинах и материалах для команды. Важным направлением стало сотрудничество с ПИК и «Самолётом»: для совместных проектов я создавала партнёрские материалы с узнаваемым стилем 169. На основе брендбука разрабатывала статичные и анимированные баннеры, полиграфию, одежду сотрудников и оклейку автомобилей, готовила ТЗ и проверяла внедрение. На фоне этой работы число брендовых запросов выросло в 2 раза.';
+    visualBranding.after(brandCopy);
   }
 
   // Keep the branded-materials image, then remove the obsolete retail section
@@ -424,7 +420,6 @@ window.SitePageContent = {
   if (
     document.getElementById('case-169-offline-copy') &&
     document.getElementById('case-169-brand-copy') &&
-    document.getElementById('case-169-brand-communications') &&
     legacySection &&
     legacyMedia && legacyMedia.matches('.framer-ry328i') &&
     legacyRetail.parentElement === legacyMedia.parentElement &&
@@ -441,7 +436,7 @@ window.SitePageContent = {
     var brandCaption = document.createElement('figcaption');
     brandCaption.textContent = 'Примеры фирменных материалов 169.';
     brandFigure.append(oldBrandImage, brandCaption);
-    document.getElementById('case-169-brand-communications').after(brandFigure);
+    document.getElementById('case-169-brand-copy').after(brandFigure);
     legacySection.remove();
   }
 
