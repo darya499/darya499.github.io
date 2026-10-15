@@ -394,12 +394,8 @@ window.SitePageContent = {
     var offlineCopy = document.createElement('p');
     offlineCopy.id = 'case-169-offline-copy';
     offlineCopy.className = 'case-summary-text';
-    offlineCopy.textContent = 'Работала с опытом покупателя в четырёх магазинах: оформляла витрины, навигацию и зонирование торгового зала, участвовала в расстановке товара. При открытии магазина в Бутово отвечала за организацию пространства — от зон до расположения ассортимента.';
-    var offlineStand = document.createElement('p');
-    offlineStand.id = 'case-169-offline-stand';
-    offlineStand.className = 'case-summary-text';
-    offlineStand.textContent = 'Обратная связь из торгового зала выявила риск у стенда для столешниц на входе: образцы падали и повреждались. Переработала его конструкцию: добавила надёжное крепление и подсветку. Теперь стенд встречает посетителей на входе, а образцы закреплены безопасно.';
-    offlineRetail.after(offlineCopy, offlineStand);
+    offlineCopy.textContent = 'В четырёх магазинах 169 навигация, информация о товарах и ценники оформлялись по-разному. Я выстроила единую систему офлайн-опыта: на основе аудита магазинов и изучения конкурентов разработала правила навигации и визуальных коммуникаций — от вывесок до инфографики и информации у товаров. Для ценников создала шаблоны под задачи магазинов и автоматизировала их печать. Систему внедрили во всех точках; для её поддержки я ввела чек-лист, отчётность, постановку задач и контроль исполнения. В результате у сети появился единый стандарт оформления, который помогает покупателю ориентироваться и усиливает узнаваемость бренда.';
+    offlineRetail.after(offlineCopy);
   }
 
   var visualBranding = document.getElementById('case-169-visual-branding');
@@ -427,7 +423,6 @@ window.SitePageContent = {
   var oldBrandImage = legacyMedia && legacyMedia.querySelector('img');
   if (
     document.getElementById('case-169-offline-copy') &&
-    document.getElementById('case-169-offline-stand') &&
     document.getElementById('case-169-brand-copy') &&
     document.getElementById('case-169-brand-communications') &&
     legacySection &&
