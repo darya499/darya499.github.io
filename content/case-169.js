@@ -93,14 +93,16 @@ window.SitePageContent = {
     var spacingStyle = document.createElement('style');
     spacingStyle.id = 'case-169-spacing';
     spacingStyle.textContent = [
-      '#case-169-hero-role { font: 600 14px/1.4 "Inter", system-ui, sans-serif; color: #666; margin: 0 0 12px; }',
+      '.case-tasks, #case-169-future-sections, #case-169-hero-facts { --case-font-family: "Switzer", "Switzer Placeholder", sans-serif; }',
+      '.case-tasks, .case-tasks *, #case-169-future-sections, #case-169-future-sections *, #case-169-hero-facts, #case-169-hero-facts *, .case-stats, .case-stats *, #case-169-hero-role { font-family: var(--case-font-family, "Switzer", "Switzer Placeholder", sans-serif); }',
+      '#case-169-hero-role { font-size: 14px; font-weight: 600; line-height: 1.4; color: #666; margin: 0 0 12px; }',
       '#case-169-hero-facts { display: grid; gap: 20px; margin: 28px 0 0; max-width: 580px; }',
-      '#case-169-hero-facts dt { font: 700 12px/1.25 "Inter", system-ui, sans-serif; color: #666; margin: 0 0 6px; }',
-      '#case-169-hero-facts dd { font: 400 15px/1.6 "Inter", system-ui, sans-serif; color: #333; margin: 0; overflow-wrap: anywhere; }',
+      '#case-169-hero-facts dt { font-size: 12px; font-weight: 700; line-height: 1.25; letter-spacing: .06em; text-transform: uppercase; color: #777; margin: 0 0 6px; }',
+      '#case-169-hero-facts dd { font-size: 15px; font-weight: 400; line-height: 1.6; color: #333; margin: 0; overflow-wrap: anywhere; }',
       '#case-169-hero-facts + .case-section-label { margin: 40px 0 16px; }',
-      '.case-story { display: grid; gap: 16px; margin: 0 0 16px; }',
+      '.case-story { display: grid; gap: 12px; width: 100%; max-width: 580px; margin: 0 0 24px; }',
       '.case-story-step { margin: 0; }',
-      '.case-story-label { display: block; font: 700 11px/1.4 "Inter", system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; color: #888; margin-bottom: 5px; }',
+      '.case-story-label { display: inline; font-family: inherit; font-size: 12px; font-weight: 700; line-height: inherit; letter-spacing: .04em; text-transform: uppercase; color: #777; margin: 0 .5em 0 0; white-space: nowrap; }',
       '.case-story-step .case-summary-text { margin: 0; overflow-wrap: break-word; }',
       '.case-section-label + .case-stats { margin-top: 0; }',
       '.case-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 48px; }',
@@ -127,6 +129,7 @@ window.SitePageContent = {
       '  #case-169-hero-facts + .case-section-label { margin-top: 32px; }',
       '  .case-tasks > .case-section-label { margin-top: 32px; }',
       '  .case-tasks > .case-section-title + .case-section-label { margin-top: 20px; }',
+      '  .case-story { gap: 10px; margin-bottom: 20px; }',
       '  .case-tasks > :is(.case-tasks-gallery, .case-tasks-stack, .case-tasks-figure, .case-compare), #case-169-future-sections > .case-tasks-figure { width: min(100%, calc(100vw - 32px)); }',
       '  #case-169-future-sections, #case-169-future-sections > .case-section-title:not(:first-child) { margin-top: 40px; }',
       '}'
@@ -708,13 +711,13 @@ window.SitePageContent = {
     story.parts.forEach(function (copy, index) {
       var step = document.createElement('div');
       step.className = 'case-story-step';
-      var label = document.createElement('span');
-      label.className = 'case-story-label';
-      label.textContent = storyLabels[index];
       var paragraph = document.createElement('p');
       paragraph.className = 'case-summary-text';
-      paragraph.textContent = copy;
-      step.append(label, paragraph);
+      var label = document.createElement('span');
+      label.className = 'case-story-label';
+      label.textContent = storyLabels[index] + '.';
+      paragraph.append(label, document.createTextNode(' ' + copy));
+      step.append(paragraph);
       storyNode.appendChild(step);
     });
     if (existing) existing.replaceWith(storyNode);
