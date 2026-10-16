@@ -121,6 +121,7 @@ window.SitePageContent = {
       '#case-169-future-sections > .case-tasks-figure { margin-bottom: 24px; }',
       '#case-169-future-sections > .case-story { margin-bottom: 16px; }',
       '[data-framer-name="CTA"] #case-169-cta-title { overflow-wrap: break-word; }',
+      '[data-framer-name="CTA"] a.site-button { min-height: 48px !important; padding: 0 20px !important; border-radius: 999px !important; box-sizing: border-box; }',
       '.case-stats + .case-tasks { margin-bottom: 0; }',
       '.case-stats + .case-tasks > .case-result-badge:last-child { margin-bottom: 0; }',
       '#case-169-future-sections { margin-top: 56px; }',
