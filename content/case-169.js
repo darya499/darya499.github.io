@@ -95,6 +95,7 @@ window.SitePageContent = {
     spacingStyle.textContent = [
       '.case-tasks, #case-169-future-sections, #case-169-hero-facts { --case-font-family: "Switzer", "Switzer Placeholder", sans-serif; }',
       '.case-tasks, .case-tasks *, #case-169-future-sections, #case-169-future-sections *, #case-169-hero-facts, #case-169-hero-facts *, .case-stats, .case-stats *, #case-169-hero-role { font-family: var(--case-font-family, "Switzer", "Switzer Placeholder", sans-serif); }',
+      '.case-tasks-figure figcaption { font-family: var(--case-font-family, "Switzer", "Switzer Placeholder", sans-serif); }',
       '#case-169-hero-role { font-size: 14px; font-weight: 600; line-height: 1.4; color: #666; margin: 0 0 12px; }',
       '#case-169-hero-facts { display: grid; gap: 20px; margin: 28px 0 0; max-width: 580px; }',
       '#case-169-hero-facts dt { font-size: 12px; font-weight: 700; line-height: 1.25; letter-spacing: .06em; text-transform: uppercase; color: #777; margin: 0 0 6px; }',
