@@ -5,6 +5,9 @@
   var style = document.createElement('style');
   style.id = 'home-feed-publications-style';
   style.textContent = [
+    '#feed .framer-74ubc6 { display: none !important; }',
+    '#feed .framer-g7hgfg { height: auto !important; min-height: 0 !important; }',
+    '#feed .framer-1mnuu41 { gap: clamp(24px, 3vw, 32px) !important; }',
     '#feed .framer-uvcvyr { display: block !important; }',
     '#feed .home-feed-grid {',
     '  width: 100%;',
@@ -74,7 +77,12 @@
     '  }',
     '  #feed .home-feed-card:hover .home-feed-card__media img { transform: scale(1.025); }',
     '}',
+    '@media (min-width: 768px) {',
+    '  #feed { padding-top: 64px !important; padding-bottom: 96px !important; }',
+    '}',
     '@media (max-width: 767.98px) {',
+    '  .focus-strip-clean { padding-inline: 22px !important; }',
+    '  .focus-strip-tags { min-width: 0; }',
     '  #feed .home-feed-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }',
     '  #feed .home-feed-card__body { min-height: 0; padding: 20px; }',
     '  #feed .home-feed-card__title { font-size: 26px; }',
