@@ -136,6 +136,7 @@ window.SitePageContent = {
       '.case-tasks > :is(.case-tasks-figure, .case-tasks-gallery, .case-compare) + .case-result-badge { margin-top: 24px; }',
       '.case-tasks > :is(.case-tasks-gallery, .case-tasks-stack, .case-tasks-figure, .case-compare), #case-169-future-sections > .case-tasks-figure { width: 100%; max-width: 100%; position: relative; left: auto; transform: none; box-sizing: border-box; }',
       '.case-tasks-figure img { box-sizing: border-box; }',
+      '#case-169-branding-showcase img { display: block; width: 100%; height: auto; aspect-ratio: 384 / 157; object-fit: contain; }',
       '.case-tasks-figure img:focus-visible, .case-compare-handle:focus-visible .case-compare-handle-grip { outline: 3px solid #3857bb; outline-offset: 3px; }',
       '.case-tasks > .case-tasks-gallery { margin-bottom: 24px; }',
       '#case-169-future-sections > .case-tasks-figure { margin-bottom: 24px; }',
@@ -753,6 +754,25 @@ window.SitePageContent = {
       following = next;
     }
   });
+
+  var brandingStory = document.getElementById('case-169-brand-copy');
+  if (brandingStory && !document.getElementById('case-169-branding-showcase')) {
+    var brandingShowcase = document.createElement('figure');
+    brandingShowcase.id = 'case-169-branding-showcase';
+    brandingShowcase.className = 'case-tasks-figure';
+
+    var brandingShowcaseImage = document.createElement('img');
+    brandingShowcaseImage.src = '/assets/case-169/branding-visual-system.webp';
+    brandingShowcaseImage.alt = 'Визуальная система 169 на digital-, печатных и офлайн-носителях';
+    brandingShowcaseImage.width = 1536;
+    brandingShowcaseImage.height = 628;
+    brandingShowcaseImage.loading = 'lazy';
+    brandingShowcaseImage.decoding = 'async';
+
+    brandingShowcase.appendChild(brandingShowcaseImage);
+    var currentBrandVisual = document.getElementById('case-169-brand-visual');
+    (currentBrandVisual || brandingStory).after(brandingShowcase);
+  }
 
   container.querySelectorAll(':scope > .case-section-label').forEach(function (heading) {
     if (heading.tagName === 'H3') return;
