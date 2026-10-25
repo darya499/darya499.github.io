@@ -530,9 +530,13 @@ window.SitePageContent = {
     var brandFigure = document.createElement('figure');
     brandFigure.id = 'case-169-brand-visual';
     brandFigure.className = 'case-tasks-figure';
-    oldBrandImage.alt = 'Примеры фирменных материалов 169';
+    oldBrandImage.src = '../assets/case-169/brand-visual-language.webp';
+    oldBrandImage.alt = 'Визуальная система 169 на сайте, в полиграфии, оформлении транспорта и брендированных материалах';
+    oldBrandImage.width = 2048;
+    oldBrandImage.height = 837;
     oldBrandImage.style.height = 'auto';
     oldBrandImage.loading = 'lazy';
+    oldBrandImage.decoding = 'async';
     var brandCaption = document.createElement('figcaption');
     brandCaption.textContent = 'Примеры фирменных материалов 169.';
     brandFigure.append(oldBrandImage, brandCaption);
