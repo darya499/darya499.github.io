@@ -82,6 +82,9 @@
   contentScript.onload = function () {
     applyContent(window.SitePageContent);
     delete window.SitePageContent;
+    if (window.PortfolioUI && typeof window.PortfolioUI.configureNavigationalLinks === 'function') {
+      window.PortfolioUI.configureNavigationalLinks();
+    }
   };
   contentScript.onerror = function () {
     /* A page without a content file keeps its original exported content. */

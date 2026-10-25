@@ -6,11 +6,8 @@
 | --- | --- | --- |
 | `/` | `index.html` | Главная; шапка и кнопки подключают файлы из `components/`, подвал внутри страницы. |
 | `/case-169/` | `case-169/index.html` | Авторский кейс 169.ru; ссылки на шапку, кнопки и подвал из `components/`. |
-| `/cases/` | `cases/index.html` | Список кейсов; часть карточек ещё из шаблона. |
-| `/cases/essentia/`, `/cases/orbital/`, `/cases/quantum/` | соответствующий `cases/<имя>/index.html` | Страницы исходного шаблона. |
+| `/cases/` | `cases/index.html` | Список опубликованных кейсов. |
 | `/feed/` | `feed/index.html` | Лента. |
-| `/blog/` | `blog/index.html` | Список статей. |
-| `/blog/<статья>/` | `blog/<статья>/index.html` | Три опубликованные статьи; имена папок видны в репозитории. |
 | `/privacy-policy/`, `/terms/` | соответствующий `index.html` | Служебные страницы. |
 | `/404.html` | `404.html` | Страница ошибки. |
 | `/daria-maksimova-resume.pdf` | `daria-maksimova-resume.pdf` | Публичное резюме. |
@@ -22,14 +19,7 @@
 | `/` | `content/home.js` |
 | `/case-169/` | `content/case-169.js` |
 | `/cases/` | `content/cases.js` |
-| `/cases/essentia/` | `content/cases-essentia.js` |
-| `/cases/orbital/` | `content/cases-orbital.js` |
-| `/cases/quantum/` | `content/cases-quantum.js` |
 | `/feed/` | `content/feed.js` |
-| `/blog/` | `content/blog.js` |
-| `/blog/designing-for-human-connection/` | `content/blog-designing-for-human-connection.js` |
-| `/blog/how-designers-and-developers-can-actually-collaborate/` | `content/blog-how-designers-and-developers-can-actually-collaborate.js` |
-| `/blog/why-faster-isnt-always-better/` | `content/blog-why-faster-isnt-always-better.js` |
 | `/privacy-policy/` | `content/privacy-policy.js` |
 | `/terms/` | `content/terms.js` |
 
@@ -43,4 +33,4 @@
 
 Маршрута для кейса `106` в репозитории нет. Сейчас единственный подтверждённый авторский кейс — `/case-169/`.
 
-На дополнительных страницах `/cases/` и `/blog/` остаются материалы шаблона Joseph Alexander. Они включены в публикацию по решению владелицы сайта.
+Страницы шаблонных кейсов и блога удалены из публикации. В `/cases/` остаются только карточки актуальных кейсов.

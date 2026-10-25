@@ -12,8 +12,8 @@
 
 - `/` → `content/home.js`;
 - `/case-169/` → `content/case-169.js`;
-- `/cases/orbital/` → `content/cases-orbital.js`;
-- `/blog/article-name/` → `content/blog-article-name.js`.
+- `/cases/` → `content/cases.js`;
+- `/feed/` → `content/feed.js`.
 
 В content-файле добавляйте только точечные замены в массив `replacements`. Всегда используйте конкретный CSS-селектор, а для повторяющихся элементов — `matchText`, чтобы не изменить соседние блоки. После правки проверьте публичную страницу и убедитесь, что остальные элементы не изменились.
 

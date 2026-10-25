@@ -14,6 +14,11 @@
     '}'
   ].join('\n');
   document.head.appendChild(style);
+
+  document.querySelectorAll('a[href="../blog/how-designers-and-developers-can-actually-collaborate/"]').forEach(function (link) {
+    var section = link.closest('[data-framer-name="Featured Article"]') || link.closest('.ssr-variant') || link;
+    section.remove();
+  });
 })();
 
 window.SitePageContent = {

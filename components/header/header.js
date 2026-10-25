@@ -50,6 +50,35 @@
   var programmaticKey = null;
   var programmaticUntil = 0;
 
+  function configureNavigationalLinks() {
+    var retiredBlogPath = new URL('blog/', root).pathname.replace(/\/+$/, '/');
+    var feedUrl = new URL('feed/', root).href;
+
+    Array.prototype.forEach.call(document.querySelectorAll('a[href]'), function (link) {
+      var href = (link.getAttribute('href') || '').trim();
+      if (!href || href.charAt(0) === '#' || /^(?:mailto|tel|javascript|data):/i.test(href)) return;
+
+      var url;
+      try {
+        url = new URL(href, location.href);
+      } catch (error) {
+        return;
+      }
+
+      if (url.origin === location.origin && url.pathname.replace(/\/+$/, '/') === retiredBlogPath) {
+        link.setAttribute('href', feedUrl);
+        if (/^(?:блог|blog)$/i.test(link.textContent.trim())) link.textContent = 'Лента';
+      }
+
+      link.setAttribute('target', '_blank');
+      var rel = (link.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+      ['noopener', 'noreferrer'].forEach(function (value) {
+        if (rel.indexOf(value) < 0) rel.push(value);
+      });
+      link.setAttribute('rel', rel.join(' '));
+    });
+  }
+
   function syncScrollState() {
     nav.classList.toggle('is-scrolled', window.scrollY > 24);
   }
@@ -166,6 +195,8 @@
   setMenu(false);
   syncScrollState();
   syncLocation();
+  configureNavigationalLinks();
+  window.addEventListener('load', configureNavigationalLinks, { once: true });
 
   var contentLoader = document.createElement('script');
   contentLoader.src = new URL('scripts/content-loader.js', root).href + '?v=' + Date.now();
@@ -189,4 +220,5 @@
     setMenu: setMenu,
     setActive: setActive
   };
+  window.PortfolioUI.configureNavigationalLinks = configureNavigationalLinks;
 })();
