@@ -97,6 +97,30 @@
 window.SitePageContent = {
   replacements: [
     {
+      selector: '#projects img[src="assets/home-inline/530ef6a5e674.jpg"], #projects img[src="assets/home-inline/06ea059aa52d.jpg"], #projects img[src="assets/home-inline/0e8e0fa6bffe.jpg"]',
+      attributes: {
+        src: 'assets/home-inline/project-in-development.webp',
+        alt: 'Проект в разработке',
+        width: '1448',
+        height: '1086'
+      }
+    },
+    {
+      selector: '#projects [data-framer-name="Project Name"] p',
+      matchText: 'Поиск',
+      text: 'ХХХ'
+    },
+    {
+      selector: '#projects [data-framer-name="Project Name"] p',
+      matchText: 'Landing',
+      text: 'ХХХ'
+    },
+    {
+      selector: '#projects [data-framer-name="Project Name"] p',
+      matchText: 'PDP',
+      text: 'ХХХ'
+    },
+    {
       selector: '#feed .framer-1uq8uo9-container > a',
       attributes: {
         href: 'feed/',
